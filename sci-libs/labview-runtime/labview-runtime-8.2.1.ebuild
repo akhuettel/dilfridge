@@ -13,7 +13,7 @@ SRC_URI="http://ftp.ni.com/support/softlib/visa/NI-VISA/4.4/linux/NI-VISA-4.4.0.
 HOMEPAGE="http://www.ni.com/"
 
 KEYWORDS=""
-RESTRICT="primaryuri"
+RESTRICT="fetch mirror primaryuri"
 
 SLOT="0"
 
