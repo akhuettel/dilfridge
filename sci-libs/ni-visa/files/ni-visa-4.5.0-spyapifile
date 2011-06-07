@@ -1,0 +1,5 @@
+[APIs\3]
+(Default)="NI-VISA"
+SpyDllFormat="libNiSpyVV.so"
+StatusPrefix="VISA"
+WinHelp="/opt/vxipnp/linux/NIvisa/Help/NI-VISA/html/ni-visa.chm"
