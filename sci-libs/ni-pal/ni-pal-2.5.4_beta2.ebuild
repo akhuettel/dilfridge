@@ -22,6 +22,8 @@ use x86 && NI_RPMFILES+=" nivisa-runtime-5.0.0b5.tar.gz.dir/rpms/nipalki-2.5.4-b
 
 QA_PRESTRIPPED="/usr/sbin/nipalsm /opt/natinst/nipal/sbin/nipalsm"
 
+RESTRICT="bindist mirror primaryuri"
+
 src_install() {
 	# now lets merge the rpm contents
 	mkdir "${S}/merged"
