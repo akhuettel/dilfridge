@@ -1,0 +1,46 @@
+diff -r -u ni-kal-2.0_beta1.orig/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/bin/installerUtility.sh ni-kal-2.0_beta1/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/bin/installerUtility.sh
+--- ni-kal-2.0_beta1.orig/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/bin/installerUtility.sh	2010-05-26 19:09:16.000000000 +0200
++++ ni-kal-2.0_beta1/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/bin/installerUtility.sh	2010-05-28 18:05:37.000000000 +0200
+@@ -287,18 +287,8 @@
+ 
+    # check that the headers dir that we found is configured
+    configuredStatus=$statusSuccess
+-   if [ ! -e $headersDir/include/asm ]; then
++   if [ ! -e $headersDir/include/generated ]; then
+       configuredStatus=$statusFail
+-   else
+-      if [ "$kernelMinor" = "4" ]; then
+-         if [ ! -e $headersDir/include/linux/modversions.h ]; then
+-            configuredStatus=$statusFail
+-         fi
+-      elif uname -m | egrep "i.86" > /dev/null; then
+-         if [ ! -e $headersDir/include/asm/asm_offsets.h ] && [ ! -e $headersDir/include/asm/asm-offsets.h ]; then
+-            configuredStatus=$statusFail
+-         fi
+-      fi
+    fi
+ 
+    if [ $configuredStatus -ne $statusSuccess ]; then
+@@ -316,8 +306,8 @@
+    # the kernel
+    sourceVersionStatus=$statusSuccess
+    if [ "`$GREP UTS_RELEASE $headersDir/include/linux/version.h | $GREP -c \"$kernelVersion\"`" = "0" ]; then
+-      if [ -e $headersDir/include/linux/utsrelease.h ]; then
+-         if [ "`$GREP UTS_RELEASE $headersDir/include/linux/utsrelease.h | $GREP -c \"$kernelVersion\"`" = "0" ]; then
++      if [ -e $headersDir/include/generated/utsrelease.h ]; then
++         if [ "`$GREP UTS_RELEASE $headersDir/include/generated/utsrelease.h | $GREP -c \"$kernelVersion\"`" = "0" ]; then
+             sourceVersionStatus=$statusFail
+          fi
+       else
+diff -r -u ni-kal-2.0_beta1.orig/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/src/nikal/nikal.c ni-kal-2.0_beta1/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/src/nikal/nikal.c
+--- ni-kal-2.0_beta1.orig/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/src/nikal/nikal.c	2010-05-26 19:09:16.000000000 +0200
++++ ni-kal-2.0_beta1/nikali-2.0.0-b1.noarch.rpm.dir/usr/local/natinst/nikal/src/nikal/nikal.c	2010-05-28 18:06:14.000000000 +0200
+@@ -41,7 +41,7 @@
+    #endif
+ 
+    #include <linux/module.h>
+-   #include <linux/autoconf.h>
++   #include <generated/autoconf.h>
+    #include <linux/kmod.h>
+ #endif
+ 
