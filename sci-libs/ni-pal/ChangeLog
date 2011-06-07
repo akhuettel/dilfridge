@@ -1,0 +1,21 @@
+# ChangeLog for sci-libs/ni-pal
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ni-pal-2.5.4_beta2 (07 Jun 2011)
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ni-pal-2.5.4_beta2.ebuild, +files/ni-pal-2.5.4_beta2-envd,
+  +files/ni-pal-2.5.4_beta2-initscript, +files/ni-pal-2.5.4_beta2-nipalwrapper,
+  +metadata.xml:
+  Copied old files to dilfridge overlay
+
+  30 May 2010; Andreas K. Huettel (dilfridge) <mail@akhuettel.de>
+  ni-pal-2.3.0.ebuild, -ni-pal-2.4.0.ebuild, ni-pal-2.5.4_beta2.ebuild,
+  +files/ni-pal-2.5.4_beta2-envd, +files/ni-pal-2.5.4_beta2-initscript,
+  +files/ni-pal-2.5.4_beta2-nipalwrapper:
+  Continued with the beta version.
+
+  19 May 2010; Andreas K. Huettel +ni-pal-2.4.1.0.ebuild, +metadata.xml:
+  Started with eclass version.
+

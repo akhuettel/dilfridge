@@ -1,0 +1,17 @@
+#!/sbin/runscript
+
+depend()
+{
+   provide nipalsm
+}
+
+start()
+{
+   /etc/init.d/nipal start
+}
+
+stop()
+{
+   /etc/init.d/nipal stop
+}
+

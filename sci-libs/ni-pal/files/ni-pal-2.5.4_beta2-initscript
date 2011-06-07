@@ -1,0 +1,134 @@
+#!/sbin/runscript
+
+depend() {
+	need localmount
+	after bootmisc logger ntp-client ntpd
+	provide nipalsm
+}
+
+start() {
+
+	nipalEtc=/etc/natinst/nipal
+	nipalDir=`cat $nipalEtc/nipal.dir`
+	nikalDir=`cat /etc/natinst/nikal/nikal.dir`
+	nipalVar=/var/lib/natinst/nipal
+ 
+	# need to load kernel modules: nikal, nipalk
+
+	ebegin "Loading NI-KAL kernel abstraction layer"
+	if modprobe nikal; then
+	  eend 0
+	else
+          eend 1
+	  ebegin "  Loading nikal.ko failed. Trying to rebuild all NI drivers"
+          if /usr/local/natinst/nikal/bin/updateNIDrivers --no-prompt; then 
+	    eend 0
+	    ebegin "  Re-trying to load the NI-KAL kernel abstraction layer"
+	    if modprobe nikal; then
+	      eend 0
+	    else
+              eend 1
+              return 1
+            fi
+	  else
+	    eend 1
+	    return 1
+	  fi
+	fi
+	
+	ebegin "Loading NI-PAL driver model"
+	if modprobe nipalk; then
+          eend 0
+	else
+	  eend 1
+	  ebegin "  Loading nipalk.ko failed. Trying to rebuild all NI drivers"
+          if /usr/local/natinst/nikal/bin/updateNIDrivers --no-prompt; then 
+	    eend 0
+	    ebegin "  Re-trying to load the NI-PAL driver model"
+	    if modprobe nipalk; then
+	      eend 0
+	    else
+              eend 1
+              return 1
+            fi
+	  else
+	    eend 1
+	    return 1
+	  fi
+        fi
+
+	# making the device node 
+
+        PALCHARMAJOR=`grep nikal /proc/devices | awk '{ print $1 }'`
+
+        rm -f /dev/nipalk
+        mknod /dev/nipalk c $PALCHARMAJOR 0
+        chmod 0666 /dev/nipalk
+
+	# the persistent data storage: NI voodoo 
+
+        nipalPersistentDataFile=$nipalVar/nipalps.bin
+        if [ ! -f $nipalPersistentDataFile ]; then
+           echo -n "%" > $nipalPersistentDataFile
+           chmod 600 $nipalPersistentDataFile
+        fi
+        cat $nipalPersistentDataFile > /dev/nipalk
+ 
+        $nipalDir/bin/readInfFiles `find $nipalEtc/inf -iname \*.inf | sort` >/dev/null 2>&1
+ 
+	killall -q nipalps
+
+	ebegin "Starting NI-PAL persistent storage flusher"
+	start-stop-daemon --start --background --exec $nipalDir/bin/nipalps -- /dev/nipalk $nipalPersistentDataFile 
+	eend $?
+
+
+	ebegin "Loading NI-PAL device driver modules"
+        for MOD in `ls $nipalEtc/bootdrivers/* 2>/dev/null`
+        do
+           for line in `cat $MOD`
+           do
+	      ebegin "  driver $line"
+              /sbin/modprobe $line
+              eend $?
+           done
+        done
+
+        touch /var/lock/subsys/nipal
+ 
+}
+
+stop() {
+
+	nipalEtc=/etc/natinst/nipal
+	nipalDir=`cat $nipalEtc/nipal.dir`
+	nikalDir=`cat /etc/natinst/nikal/nikal.dir`
+	nipalVar=/var/lib/natinst/nipal
+ 
+	# source NI utility.sh for testKernelDriverLoaded and recursiveUnloadKernelDriver
+	. $nikalDir/src/utility.sh
+ 
+	ebegin "Stopping NI-PAL persistent storage flusher"
+	start-stop-daemon --stop --quiet --exec $nipalDir/bin/nipalps
+	eend $?
+
+        if testKernelDriverLoaded nipalk; then
+
+      	  ebegin "Unloading NI-PAL kernel modules"
+          if ! recursiveUnloadKernelDriver nipalk ; then
+
+            eend 1
+            return 1
+
+          fi
+	  eend 0
+        fi
+
+	rm -f /dev/nipalk
+
+	if [ -f /var/lock/subsys/nipal ]; then
+          rm -f /var/lock/subsys/nipal
+        fi
+        return 0
+
+}

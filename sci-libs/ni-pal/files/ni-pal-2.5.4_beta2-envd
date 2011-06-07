@@ -1,0 +1,3 @@
+LDPATH="/usr/local/lib"
+CPATH="/usr/local/natinst/include"
+PATH="/usr/local/natinst/bin"
