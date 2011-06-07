@@ -2,6 +2,13 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*ni-kal-2.1 (07 Jun 2011)
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -ni-kal-1.10.0.0-r1.ebuild, -ni-kal-2.0_beta1.ebuild, +ni-kal-2.1.ebuild,
+  +files/ni-kal-2.1-ioctl.patch, -files/kernel-checks.patch:
+  Version bump and general cleanup
+
   07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   ni-kal-1.10.0.0-r1.ebuild, ni-kal-2.0_beta1.ebuild:
   Added restrict
