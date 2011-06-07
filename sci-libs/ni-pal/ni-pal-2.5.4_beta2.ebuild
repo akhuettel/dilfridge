@@ -57,21 +57,21 @@ src_install() {
 	# We create the NI share directory already here since it is (ahem...) shared 
 	# between different packages using ni-pal. It contains only etc/share.dir though...
 	#
-	dodir ${NI_PREFIX}/natinst/share/etc
-	echo "${NI_PREFIX}/natinst/share" > "${D}${NI_PREFIX}"/natinst/share/etc/share.dir
-	dosym ${NI_PREFIX}/natinst/share/etc /etc/natinst/share
+	dodir $(get-nisharedir)/etc
+	echo "$(get-nisharedir)" > "${D}$(get-nisharedir)"/etc/share.dir
+	dosym $(get-nisharedir)/etc /etc/natinst/share
 
-	dodir ${NI_PREFIX}/natinst/share/errors/English
-	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/English/nipal-errors.txt ${NI_PREFIX}/natinst/share/errors/English
+	dodir $(get-nisharedir)/errors/English
+	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/English/nipal-errors.txt $(get-nisharedir)/errors/English
 
-	dodir ${NI_PREFIX}/natinst/share/errors/French
-	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/French/nipal-errors.txt  ${NI_PREFIX}/natinst/share/errors/French
-	dodir ${NI_PREFIX}/natinst/share/errors/German
-	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/German/nipal-errors.txt  ${NI_PREFIX}/natinst/share/errors/German
-	dodir ${NI_PREFIX}/natinst/share/errors/Japanese
-	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/Japanese/nipal-errors.txt ${NI_PREFIX}/natinst/share/errors/Japanese
-	dodir ${NI_PREFIX}/natinst/share/errors/Korean
-	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/Korean/nipal-errors.txt   ${NI_PREFIX}/natinst/share/errors/Korean
+	dodir $(get-nisharedir)/errors/French
+	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/French/nipal-errors.txt  $(get-nisharedir)/errors/French
+	dodir $(get-nisharedir)/errors/German
+	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/German/nipal-errors.txt  $(get-nisharedir)/errors/German
+	dodir $(get-nisharedir)/errors/Japanese
+	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/Japanese/nipal-errors.txt $(get-nisharedir)/errors/Japanese
+	dodir $(get-nisharedir)/errors/Korean
+	dosym ${NI_PREFIX}/natinst/nipal/etc/errors/Korean/nipal-errors.txt $(get-nisharedir)/errors/Korean
 }
 
 pkg_postinst() {
