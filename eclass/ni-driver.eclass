@@ -142,4 +142,8 @@ ni-driver_pkg_postinst() {
 	echo
 }
 
+get-nisharedir() {
+	echo -n "${NI_PREFIX}/natinst/share"
+}
+
 EXPORT_FUNCTIONS pkg_setup src_unpack pkg_postinst
