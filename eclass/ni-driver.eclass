@@ -105,17 +105,26 @@ ni-driver_src_unpack() {
 	
 	# Then, search for the rpm files that were in there...
 	if [ ${#NI_RPMFILES[*]} -eq 0 ]; then 
+		# no list given - use all
 		for a in ${NI_TARDIRS} ; do 
-			NI_RPMFILES=$(find "${S}/${a}" -name "*.rpm"|sed -e "s#^${S}/##")
+			NI_RPMS=$(find "${S}/${a}" -name "*.rpm"|sed -e "s#^${S}/##")
+		done
+	else
+		NI_RPMS=""
+		# find rpms matching the given globs
+		for g in ${NI_RPMFILES[@]} ; do
+			for a in ${NI_TARDIRS} ; do 
+				NI_RPMS+="$(find "${S}/${a}" -name "${g}"|sed -e "s#^${S}/##") "
+			done
 		done
 	fi
-	einfo rpm file\(s\) for installation found: ${NI_RPMFILES[*]}
+	einfo rpm file\(s\) for installation found: ${NI_RPMS[*]}
 
 	# ... and unpack the rpm files, all into the default workdir
-	for a in ${NI_RPMFILES} ; do
-		mkdir -p "${S}/unpacked"
-		cd "${S}/unpacked"
-		rpm_unpack ./../${a}
+	mkdir -p "${S}/unpacked"
+	cd "${S}/unpacked"
+	for a in ${NI_RPMS} ; do
+		rpm_unpack "./../${a}"
 	done
 	
 	# reset S to new value
