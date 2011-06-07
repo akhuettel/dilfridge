@@ -1,0 +1,14 @@
+# ChangeLog for sci-libs/labview-runtime
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*labview-runtime-8.2.1 (07 Jun 2011)
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +labview-runtime-8.2.1.ebuild, +metadata.xml:
+  Moved to dilfridge overlay
+
+  04 May 2010; Andreas K. Huettel (dilfridge) <mail@akhuettel.de>
+  labview-runtime-8.2.1.ebuild, +metadata.xml:
+  Removed keywords.
+
