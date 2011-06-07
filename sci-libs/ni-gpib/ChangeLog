@@ -1,0 +1,11 @@
+# ChangeLog for sci-libs/ni-gpib
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ni-gpib-2.5_beta (07 Jun 2011)
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +ni-gpib-2.5_beta.ebuild, +files/ni-gpib-2.5_beta-gpibenumsvc,
+  +files/ni-gpib-2.5_beta-gpibenumsvcwrapper:
+  Add old files
+

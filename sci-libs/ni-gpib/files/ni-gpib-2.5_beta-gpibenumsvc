@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# Copyright 2008,
+# National Instruments Corporation.
+# All rights reserved.
+#
+# File: gpibenumsvc
+#
+ 
+isServiceRunning() {
+   ps -weo pid,cmd | grep gpibenumsvc | grep nipalsm &> /dev/null
+   return $?
+}
+ 
+signalServiceStop() {
+   if ! isServiceRunning; then return 0; fi
+   serviceProcessNumber=`ps -weo pid,cmd | grep gpibenumsvc | head -n 1 | awk '{print $1 }'` &> /dev/null
+   echo -n Stopping gpibenumsvc\($serviceProcessNumber\)
+   kill -INT $serviceProcessNumber &> /dev/null
+   killStatus=$?
+   if [ $killStatus != 0 ]; then
+      echo .
+      echo Error sending INT signal to gpibenumsvc.
+   else
+      stopTimeout=0
+      timeLimit=10
+      while [ $stopTimeout -lt $timeLimit ]; do
+         if ps axw -o pid | grep -w $serviceProcessNumber > /dev/null; then
+            stopTimeout=`expr $stopTimeout + 1`
+            echo -n .
+            sleep 1
+         else
+            echo .
+            echo gpibenumsvc stopped.
+            break
+         fi
+      done
+      if [ $stopTimeout -eq $timeLimit ]; then
+         echo .
+         echo gpibenumsvc did not stop within $timeLimit seconds, giving up.
+      fi
+   fi
+   return $killStatus
+}
+ 
+startService() {
+   if isServiceRunning; then return 1; fi
+   /usr/local/sbin/nipalsm /etc/natinst/nipal/services/libgpibenumsvc.so.2.5.4 &> /dev/null
+   if [ -d /var/lock/subsys ]; then
+      touch /var/lock/subsys/gpibenumsvc
+   fi
+   return $?
+}
+ 
+stopService() {
+   signalServiceStop gpibenumsvc
+   if [ -f /var/lock/subsys/gpibenumsvc ]; then
+      rm -f /var/lock/subsys/gpibenumsvc
+   fi
+   return $?
+}
+ 
+case "$1" in
+   start)        startService ;;
+   stop)         stopService ;;
+   restart)      stopService
+                 startService ;;
+   force-reload) stopService
+                 startService ;;
+   status)       isServiceRunning ;;
+   *)            echo "Usage: $0 {start|stop|restart|force-reload|status}"
+                 exit 2 ;;
+esac
+exit $?
+ 

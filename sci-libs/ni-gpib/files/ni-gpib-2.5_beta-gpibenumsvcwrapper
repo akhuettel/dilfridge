@@ -1,0 +1,16 @@
+#!/sbin/runscript
+
+depend()
+{
+   need nipalsm
+}
+
+start()
+{
+   /etc/init.d/gpibenumsvc start
+}
+
+stop()
+{
+   /etc/init.d/gpibenumsvc stop
+}
