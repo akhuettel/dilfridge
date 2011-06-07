@@ -4,6 +4,10 @@
 
   07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   ni-pal-2.5.4_beta2.ebuild:
+  Lots of cleanup and moving code to the eclass
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  ni-pal-2.5.4_beta2.ebuild:
   Added restrict
 
 *ni-pal-2.5.4_beta2 (07 Jun 2011)
