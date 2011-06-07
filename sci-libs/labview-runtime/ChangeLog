@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*labview-runtime-9.0.1 (07 Jun 2011)
+
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -labview-runtime-8.2.1.ebuild, +labview-runtime-9.0.1.ebuild:
+  General cleanup and version bump, untested
+
   07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   labview-runtime-8.2.1.ebuild:
   Add restricts
