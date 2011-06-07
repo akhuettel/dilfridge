@@ -1,0 +1,24 @@
+Comments found while testing nikal-2.0 beta 1
+
+
+installerUtility.sh:
+
+line 290 and follwing
+the test checks for $headersDir/include/asm and files in there but this directory is not generated anymore 
+during kernel build (not sure since when, maybe 2.6.31) -> please remove this check
+As far as I can see at the moment, on 2.6.33 the best way to check is directly test the existence of 
+$headersDir/.config
+
+line 315 and following
+this test does not work correctly anymore either, since version.h does not contain the cleartext version 
+and utsrelease.h does not exist. 
+My suggestion would be to grep $headersDir/.config for "# Linux kernel version: "
+This line looks e.g. 
+# Linux kernel version: 2.6.33-gentoo-r1
+
+
+
+line 340:
+please use "LANG=C $CC" instead of "$CC", else this breaks all non-english locales
+
+

@@ -1,0 +1,14 @@
+debugging of gpib driver:
+* use nispy and labview-runtime from ni-gpib package instead of visa, makes debugging easier
+
+Current TODO's:
+* create a file that indicates if updateNIdrivers has to be run, and respect this in the nipal init script
+(then our users just have to (re-)start this script after (re-)installing sth
+* where does all this .nicore stuff come from, and do we need it?
+* stricter permissions for /dev/nipalk and some files possible?
+* bug report to NI:
+	- tempfile
+	- init_mm
+	- typo in share_dir stuff
+* do we need nispy, niorb and/or nirpc?
+
