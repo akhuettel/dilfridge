@@ -2,6 +2,10 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  ni-gpib-2.5_beta.ebuild:
+  Add restrict
+
 *ni-gpib-2.5_beta (07 Jun 2011)
 
   07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>

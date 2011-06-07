@@ -10,7 +10,7 @@ DESCRIPTION="NI GPIB 488.2 driver"
 SRC_URI="http://ftp.ni.com/support/softlib/gpib/linux/Linux%20Beta/ni4882-2.5.4b1-release.tar.gz"
 
 HOMEPAGE="http://www.ni.com/"
-RESTRICT="primaryuri"
+RESTRICT="mirror primaryuri"
 
 KEYWORDS=""
 SLOT="0"
