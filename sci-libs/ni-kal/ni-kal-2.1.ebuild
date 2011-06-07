@@ -9,7 +9,7 @@ inherit base linux-info linux-mod ni-driver
 DESCRIPTION="NI-KAL National Instruments kernel abstraction layer"
 SRC_URI="http://ftp.ni.com/support/softlib/kal/2.1/NIKAL21.iso"
 
-KEYWORDS=""
+KEYWORDS="-* ~amd64 ~x86"
 SLOT="0"
 IUSE=""
 
@@ -42,7 +42,7 @@ src_install() {
 	linux-mod_src_install
 
 	dodir "${NI_PREFIX}"
-	cp -a "${S}/usr/local/natinst" "${D}${NI_PREFIX}/natinst"
+	cp -a "${S}/usr/local/natinst" "${D}${NI_PREFIX}/natinst" || die
 
 	dodir "${NI_PREFIX}/natinst/nikal/etc/clientkdb"
 
@@ -54,5 +54,8 @@ src_install() {
 	dosym "${NI_PREFIX}/natinst/nikal/bin/updateNIDrivers" /usr/bin/
 	dosym "${NI_PREFIX}/natinst/nikal/bin/niSystemReport" /usr/bin/
 
-	ewarn "If you have 4GB of memory or more, pass \"mem=4096M\" as an kernel option to avoid segfaults!"
+	if use x86 ; then
+		ewarn "If you have 4GB of memory or more, you have to pass \"mem=4096M\" as"
+		ewarn "kernel option to make the ni-kal driver work!"
+	fi
 }

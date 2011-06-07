@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> ni-kal-2.1.ebuild:
+  QA cleanups and keywords
+
 *ni-kal-2.1 (07 Jun 2011)
 
   07 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
