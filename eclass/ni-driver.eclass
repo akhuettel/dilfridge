@@ -1,29 +1,30 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: $
+
+inherit eutils rpm
 
 # @ECLASS: ni-driver.eclass
 # @MAINTAINER:
 # mail@akhuettel.de
 # @BLURB: Class for handling National Instruments linux device driver packages.
 
-inherit eutils rpm
+# @ECLASS-VARIABLE: EAPI
+# @DESCRIPTION:
+# Currently the ni-driver eclass supports EAPI 4.
+case ${EAPI:-0} in
+	4) : ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
 
 HOMEPAGE="${HOMEPAGE:-http://www.ni.com/}"
 RESTRICT="${RESTRICT:-bindist mirror primaryuri}"
 LICENSE="${LICENSE:-ni-visa}"
 
 DEPEND="app-cdr/poweriso"
+RDEPEND=""
 
 NI_PREFIX="${NI_PREFIX:-/opt}"
-
-
-
-
-
-
-
-
 
 # @FUNCTION: ni-driver_pkg_setup
 # @USAGE: 
@@ -47,14 +48,7 @@ ni-driver_pkg_setup() {
 	fi
 }
 
-
-
-
-
-
-
-
-distiso_unpack() {
+_ni_distiso_unpack() {
 	local infile=${1}
 	local outdir=$(basename ${infile}).dir
 
@@ -65,7 +59,7 @@ distiso_unpack() {
 	NI_DISTDIRS=( ${NI_DISTDIRS} "${outdir}" )
 }
 
-disttgz_unpack() {
+_ni_disttgz_unpack() {
 	local infile=${1}
 	local outdir=$(basename ${1}).dir
 
@@ -76,12 +70,6 @@ disttgz_unpack() {
 
 	NI_DISTDIRS=( ${NI_DISTDIRS} "${outdir}" )
 }
-
-
-
-
-
-
 
 # @FUNCTION: ni-drivers_src_unpack
 # @USAGE: <isofiles> <targzfiles>
@@ -94,8 +82,8 @@ ni-driver_src_unpack() {
 	# First, unpack the downloaded iso or tgz files. 
 	for a in ${A} ; do
 		case ${a} in
-			*.iso) distiso_unpack "${a}" ;;
-			*.tar.gz) disttgz_unpack "${a}" ;;
+			*.iso) _ni_distiso_unpack "${a}" ;;
+			*.tar.gz) _ni_disttgz_unpack "${a}" ;;
 		esac
 	done
 
@@ -123,35 +111,26 @@ ni-driver_src_unpack() {
 	fi
 	einfo rpm file\(s\) for installation found: ${NI_RPMFILES[*]}
 
-	# ... and unpack the rpm files.
+	# ... and unpack the rpm files, all into the default workdir
 	for a in ${NI_RPMFILES} ; do
-		dir=$(basename $a).dir
-		mkdir "${S}/${dir}"
-		cd "${S}/${dir}"
+		mkdir -p "${S}/unpacked"
+		cd "${S}/unpacked"
 		rpm_unpack ./../${a}
-		NI_RPMDIRS=( ${NI_RPMDIRS} "${dir}" )
 	done
+	
+	# reset S to new value
+	S=${S}/unpacked
 }
-
-
-
-
-
-
-
-
 
 # @FUNCTION: ni-driver_pkg_postinst
 # @USAGE: 
 # @DESCRIPTION:
 # pkg_setup phase, doing some preparation checks
 ni-driver_pkg_postinst() {
-	elog
-	elog Important - do not try to update this driver installation of ${PN} with the NI installer. 
-	elog If you want to use the NI installer, first remove all related ebuilds!
-	elog
+	echo
+	elog "Important - do not try to update this installation of ${PN} with the NI installer."
+	elog "If you want to use the NI driver installer, first remove all related ebuilds!"
+	echo
 }
-
-
 
 EXPORT_FUNCTIONS pkg_setup src_unpack pkg_postinst
