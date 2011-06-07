@@ -17,6 +17,8 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+RESTRICT="bindist mirror primaryuri"
+
 pkg_setup() {
 	if kernel_is lt 2 4; then
 		die "${P} needs a kernel >=2.4! Please set your KERNEL_DIR or /usr/src/linux suitably"

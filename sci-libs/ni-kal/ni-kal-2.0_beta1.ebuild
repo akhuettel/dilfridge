@@ -18,6 +18,8 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+RESTRICT="bindist mirror primaryuri"
+
 NI_RPMFILES="nivisa-runtime-5.0.0b5.tar.gz.dir/rpms/nikali-2.0.0-b1.noarch.rpm"
 
 pkg_setup() {
