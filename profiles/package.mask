@@ -6,9 +6,6 @@
 #
 # masked for testing
 ~sci-libs/opencascade-6.5
-#
-# Lab-Measurement package mask list
-#
 
 # Andreas K. Huettel (dilfridge) <mail@akhuettel.de> (5 May 2010)
 # NI driver ebuilds are not functional yet
@@ -19,4 +16,8 @@ sci-libs/ni-orb
 sci-libs/ni-pal
 sci-libs/ni-rpc
 sci-libs/ni-spy
+
+#
+# it's not ready yet
+>net-print/cups-1.4.9999
 

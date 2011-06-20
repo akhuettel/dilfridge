@@ -2,6 +2,23 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/sci-libs/clapack/ChangeLog,v 1.9 2010/09/18 22:44:41 dilfridge Exp $
 
+  19 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  clapack-3.2.1-r6.ebuild:
+  Resync with tree
+
+*clapack-3.2.1-r6 (19 Jun 2011)
+
+  19 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +clapack-3.2.1-r6.ebuild, +files/clapack-3.2.1-findblas-r6.patch,
+  +files/clapack-3.2.1-hang.patch:
+  Fix hang from KDE bug 274940; find blas with PkgConfig
+
+*clapack-3.2.1-r5 (17 Jun 2011)
+
+  17 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +clapack-3.2.1-r5.ebuild, +files/clapack-3.2.1-findblas.patch:
+  Make eselect blas work here
+
   11 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   clapack-3.2.1-r4.ebuild:
   Resync with tree

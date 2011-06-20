@@ -2,6 +2,9 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  19 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org> +updates/2Q-2011:
+  Move the kde-base replacement packages to their proper slot
+
   30 Apr 2011; Andreas K. Huettel <dilfridge@gentoo.org> package.mask:
   Remove clapack pmask
 
