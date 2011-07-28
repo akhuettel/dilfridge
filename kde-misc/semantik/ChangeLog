@@ -2,9 +2,14 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  28 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  semantik-0.7.3_p20091013.ebuild,
+  +files/semantik-0.7.3_p20091013-wscript_libstr.patch:
+  Resync with main tree
+
   13 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   semantik-0.7.3_p20091013.ebuild:
-  [kde-misc/semantik] Cleanup, ready now
+  Cleanup, ready now
 
 *semantik-0.7.3_p20091013 (13 Jun 2011)
 
@@ -15,11 +20,11 @@
   -files/semantik-0.7.3_p13102009-rpath.patch,
   -files/semantik-0.7.3_p13102009-wscript_ldconfig.patch,
   +files/semantik-0.7.3_p20091013-wscript_ldconfig.patch:
-  [kde-misc/semantik] Cleanup
+  Cleanup
 
   13 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   semantik-0.7.3_p13102009.ebuild, +files/semantik-0.7.3_p13102009-rpath.patch:
-  [kde-misc/semantik] First version without the rpath warnings
+  First version without the rpath warnings
 
   26 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   semantik-0.7.3-r1.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/semantik/semantik-0.7.3_p20091013.ebuild,v 1.3 2011/07/13 17:36:21 mschiff Exp $
 
 EAPI=4
 
@@ -10,7 +10,7 @@ DESCRIPTION="Mindmapping-like tool for document generation."
 HOMEPAGE="http://freehackers.org/~tnagy/semantik.html"
 SRC_URI="http://semantik.googlecode.com/files/semantik-snapshot.tar.bz2 -> ${P}.tar.bz2"
 
-LICENSE="QPL"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -29,7 +29,10 @@ RDEPEND="
 S="${WORKDIR}/semantik-0.7.4"
 WAF_BINARY="${S}/waf"
 
-PATCHES=( "${FILESDIR}/${P}"-wscript_ldconfig.patch )
+PATCHES=(
+	"${FILESDIR}/${P}"-wscript_ldconfig.patch
+	"${FILESDIR}/${P}"-wscript_libstr.patch
+)
 
 src_configure() {
 	CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS}" "${WAF_BINARY}" \
