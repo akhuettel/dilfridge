@@ -1,0 +1,14 @@
+# ChangeLog for net-misc/rexjuniper
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  21 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  rexjuniper-6.5_p6.ebuild:
+  Add mirror restriction
+
+*rexjuniper-6.5_p6 (21 Aug 2011)
+
+  21 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +rexjuniper-6.5_p6.ebuild, +metadata.xml:
+  New ebuild for internal use, basic functionality works
+

@@ -2,6 +2,27 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  16 Aug 2011; <dilfridge@gentoo.org> linux-gpib-3.2.16-r1.ebuild:
+  Fix typo in firmware directory name
+
+  14 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.16-r1.ebuild:
+  Minor fixes, re-add keywords
+
+  14 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  linux-gpib-3.2.16-r1.ebuild, +files/linux-gpib-3.2.16-perl.patch:
+  Perl module installs now
+
+*linux-gpib-3.2.16-r1 (12 Aug 2011)
+
+  12 Aug 2011; <huettel@gentoo.org> +linux-gpib-3.2.16-r1.ebuild:
+  Work in progress
+
+*linux-gpib-3.2.16 (12 Aug 2011)
+
+  12 Aug 2011; <huettel@gentoo.org> +linux-gpib-3.2.16.ebuild:
+  Resync with main tree
+
   31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   linux-gpib-3.2.15.ebuild, metadata.xml:
   Resync with tree

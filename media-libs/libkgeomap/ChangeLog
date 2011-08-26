@@ -1,0 +1,87 @@
+# ChangeLog for media-libs/libkgeomap
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*libkgeomap-2.0.0 (28 Jul 2011)
+
+  28 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkgeomap-2.0.0.ebuild, +metadata.xml:
+  New version, new name...
+
+*libkmap-2.0.0_beta6 (02 Jul 2011)
+
+  02 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libkmap-2.0.0_beta5.ebuild, +libkmap-2.0.0_beta6.ebuild,
+  libkmap-2.0.0_rc.ebuild:
+  Resync with kde overlay
+
+*libkmap-2.0.0_rc (30 Jun 2011)
+
+  30 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-2.0.0_rc.ebuild:
+  Version bump
+
+  06 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -libkmap-2.0.0_beta2.ebuild, -libkmap-2.0.0_beta3.ebuild:
+  Remove old
+
+*libkmap-2.0.0_beta5 (05 May 2011)
+
+  05 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-2.0.0_beta5.ebuild:
+  Version bump
+
+*libkmap-2.0.0_beta4 (29 Mar 2011)
+
+  29 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-2.0.0_beta4.ebuild:
+  Version bump
+
+*libkmap-2.0.0_beta3 (28 Feb 2011)
+
+  28 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-2.0.0_beta3.ebuild:
+  Version bump
+
+*libkmap-2.0.0_beta2 (03 Feb 2011)
+
+  03 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-2.0.0_beta2.ebuild, +files/libkmap-2.0.0_beta2-header.patch,
+  +metadata.xml:
+  Move to media-libs, and sync version number with digikam instead of kde
+
+*libkmap-4.6.26-r1 (02 Feb 2011)
+
+  02 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -libkmap-4.6.26.ebuild, +libkmap-4.6.26-r1.ebuild,
+  +files/libkmap-4.6.26-header.patch:
+  Add patch to install missing header file
+
+  01 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -libkmap-4.6.25.ebuild, libkmap-4.6.26.ebuild:
+  Cleanup
+
+  01 Feb 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libkmap-4.6.26.ebuild:
+  Cleanup
+
+  31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libkmap-4.6.26.ebuild:
+  Seems to work
+
+*libkmap-4.6.26 (31 Jan 2011)
+
+  31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-4.6.26.ebuild:
+  Started with version bump
+
+  31 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libkmap-4.6.25.ebuild, +metadata.xml:
+  Seems to be working
+
+*libkmap-4.6.25 (30 Jan 2011)
+
+  30 Jan 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkmap-4.6.25.ebuild:
+  First rough version
+

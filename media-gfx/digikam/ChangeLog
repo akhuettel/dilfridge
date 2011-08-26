@@ -2,6 +2,63 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  29 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org> digikam-2.0.0.ebuild,
+  metadata.xml:
+  Finished for testing
+
+*digikam-2.0.0 (28 Jul 2011)
+
+  28 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -digikam-2.0.0_beta5.ebuild, -digikam-2.0.0_beta6.ebuild,
+  +digikam-2.0.0.ebuild:
+  Added work in progess, does not build yet
+
+  27 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org> digikam-1.9.0.ebuild,
+  digikam-1.9.0-r1.ebuild, +files/digikam-1.9.0-newpgf.patch,
+  digikam-2.0.0_rc.ebuild:
+  Resync with main tree
+
+  27 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-2.0.0_rc.ebuild:
+  Cleanup, re-add accidentally dropped useflag mysql, depend on kde-4.7
+
+  06 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-2.0.0_rc.ebuild:
+  Although not strictly required, it is probably safer to use libpgf-6.11.24
+
+  05 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-2.0.0_rc.ebuild, +files/digikam-2.0.0_rc-officialpgf2.patch:
+  Additional compile fix for libpgf-6.11.24
+
+  05 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -files/digikam-2.0.0_officialpgf.patch,
+  +files/digikam-2.0.0_rc-officialpgf.patch:
+  Include build fix for new but unbundled libpgf
+
+  04 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-2.0.0_rc.ebuild, +files/digikam-2.0.0_officialpgf.patch:
+  Add build fix for offical new libpgf
+
+  03 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  digikam-2.0.0_rc.ebuild, +files/digikam-2.0.0_rc-oldpgf.patch:
+  Add build fix for older libpgf
+
+*digikam-2.0.0_rc (02 Jul 2011)
+
+  02 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +digikam-2.0.0_rc.ebuild, metadata.xml:
+  Version bump, does not build yet (kde bug 276969)
+
+  02 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  -digikam-1.2.0-r4.ebuild:
+  Drop old
+
+*digikam-2.0.0_beta6 (02 Jul 2011)
+
+  02 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +digikam-2.0.0_beta6.ebuild:
+  Resync with kde overlay
+
   20 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   digikam-2.0.0_beta5.ebuild:
   Backport build fix for libjpeg-turbo

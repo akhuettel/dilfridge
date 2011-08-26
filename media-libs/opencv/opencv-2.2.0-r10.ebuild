@@ -1,16 +1,16 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/opencv-2.2.0-r10.ebuild,v 1.3 2011/05/15 16:42:14 dilfridge Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/opencv/opencv-2.2.0-r10.ebuild,v 1.6 2011/07/13 20:03:06 dilfridge Exp $
 
 EAPI=3
 
 PYTHON_DEPEND="python? 2:2.6"
 
-inherit base cmake-utils python
+inherit base cmake-utils fortran-2 python
 
 MY_P=OpenCV-${PV}
 
-DESCRIPTION="A collection of algorithms and sample code for various computer vision problems."
+DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="http://opencv.willowgarage.com"
 SRC_URI="mirror://sourceforge/${PN}library/${MY_P}.tar.bz2"
 
@@ -25,11 +25,11 @@ RESTRICT=test
 RDEPEND="
 	app-arch/bzip2
 	dev-libs/libf2c
-	sys-devel/gcc[fortran]
 	sys-libs/zlib
 	>=sci-libs/clapack-3.2.1-r4
 	sci-libs/flann
 	virtual/lapack
+	virtual/fortran
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-3.2
 		>=dev-util/nvidia-cuda-npp-3.2
@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use_system_libs.patch"
 	"${FILESDIR}/${P}-v4l_2.6.38.patch"
 	"${FILESDIR}/${P}-findnpp.patch"
+	"${FILESDIR}/${P}-findblas.patch"
 )
 
 CMAKE_BUILD_TYPE="Release"
@@ -85,6 +86,7 @@ CMAKE_BUILD_TYPE="Release"
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
+	fortran-2_pkg_setup
 	if use python; then
 		python_set_active_version 2
 		python_pkg_setup

@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Aug 2011; <huettel@gentoo.org> -Lab-Tools-9999.ebuild:
+  Lab-Tools is now integrated in Lab-Measurement
+
+*Lab-Tools-9999 (04 Aug 2011)
+
+  04 Aug 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +Lab-Tools-9999.ebuild:
+  Added live ebuild
+
 *Lab-Tools-1.4 (25 May 2011)
 
   25 May 2011; Andreas K. Huettel <dilfridge@gentoo.org> +Lab-Tools-1.4.ebuild,

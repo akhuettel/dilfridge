@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xournal/xournal-0.4.5-r1.ebuild,v 1.4 2011/03/27 12:25:04 nirbheek Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xournal/xournal-0.4.5-r2.ebuild,v 1.1 2011/08/17 21:12:05 dilfridge Exp $
 
 EAPI=2
 inherit gnome2 eutils
@@ -8,7 +8,7 @@ inherit gnome2 eutils
 DESCRIPTION="Xournal is an application for notetaking, sketching, and keeping a journal using a stylus."
 HOMEPAGE="http://xournal.sourceforge.net/"
 
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz http://dev.gentoo.org/~dilfridge/distfiles/${P}-sjg-image-rev7.patch.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -27,7 +27,7 @@ DEPEND="${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-xoprint-len.patch #bug 287701
-	epatch "${FILESDIR}"/${P}-sjg-image-rev7.patch.gz   # the image patch
+	epatch "${DISTDIR}"/${P}-sjg-image-rev7.patch.gz   # the image patch
 }
 
 src_configure() {

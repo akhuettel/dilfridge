@@ -2,6 +2,24 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*libkface-2.0.0 (28 Jul 2011)
+
+  28 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  libkface-2.0.0_rc.ebuild, +libkface-2.0.0.ebuild:
+  Version bump
+
+*libkface-2.0.0_beta6 (02 Jul 2011)
+
+  02 Jul 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkface-2.0.0_beta6.ebuild:
+  Resync with kde overlay
+
+*libkface-2.0.0_rc (30 Jun 2011)
+
+  30 Jun 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +libkface-2.0.0_rc.ebuild:
+  Version bump
+
   06 May 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   -libkface-2.0.0_beta2.ebuild, -libkface-2.0.0_beta3.ebuild:
   Remove old
