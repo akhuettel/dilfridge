@@ -1,0 +1,10 @@
+# ChangeLog for dev-perl/Sys-Mmap
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*Sys-Mmap-0.16 (16 Sep 2011)
+
+  16 Sep 2011; Andreas K. Huettel <dilfridge@gentoo.org> +Sys-Mmap-0.16.ebuild,
+  +metadata.xml:
+  New package, dependency of www-misc/zoneminder
+

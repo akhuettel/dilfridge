@@ -2,6 +2,22 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  13 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencascade-6.5.ebuild:
+  Add check_reqs unit, postinst message about rebuilding revdeps
+
+  13 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencascade-6.5.ebuild:
+  Make g++ permissive :|
+
+  13 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencascade-6.5.ebuild:
+  Correct check_reqs usage
+
+  13 Nov 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  opencascade-6.5.ebuild:
+  Minor cleanups, EAPI bump
+
   07 Mar 2011; Andreas K. Huettel <dilfridge@gentoo.org>
   opencascade-6.5.ebuild:
   Minor cleanups

@@ -1,0 +1,20 @@
+CFLAGS="-O2 -pipe -march=native"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Defaults for X11
+# warning: use_expand does not mix well with profiles
+USE="-video_cards_* -input_devices_* video_cards_nvidia video_cards_fglrx video_cards_intel video_cards_vmware input_devices_evdev"
+
+# use flags
+USE="${USE} crypt git perl ssl subversion"
+
+# portage settings
+FEATURES="sandbox strict userfetch userpriv usersandbox compress-build-logs"
+PORTAGE_NICENESS=10
+
+# location settings
+LINGUAS="de en"
+SYNC="rsync://rsync.de.gentoo.org/gentoo-portage"
+GENTOO_MIRRORS="http://ftp.uni-erlangen.de/pub/mirrors/gentoo ftp://ftp.uni-erlangen.de/pub/mirrors/gentoo http://ftp-stud.hs-esslingen.de/pub/Mirrors/gentoo/ ftp://ftp-stud.hs-esslingen.de/pub/Mirrors/gentoo/ http://de-mirror.org/distro/gentoo/ ftp://de-mirror.org/distro/gentoo/ ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo http://ftp.halifax.rwth-aachen.de/gentoo/ ftp://ftp.halifax.rwth-aachen.de/gentoo/ http://ftp.fi.muni.cz/pub/linux/gentoo/"

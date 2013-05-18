@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sci-libs/opencascade/opencascade-6.3-r3.ebuild,v 1.1 2011/03/03 01:08:20 dilfridge Exp $
 
-EAPI=3
+EAPI=4
 
-inherit autotools eutils check-reqs multilib java-pkg-opt-2
+inherit autotools eutils check-reqs multilib java-pkg-opt-2 flag-o-matic
 
 DESCRIPTION="Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="http://www.opencascade.org/"
@@ -34,7 +34,11 @@ RESTRICT="bindist mirror"
 # http://bugs.gentoo.org/show_bug.cgi?id=352435
 # http://www.gentoo.org/foundation/en/minutes/2011/20110220_trustees.meeting_log.txt
 
+CHECKREQS_MEMORY="256M"
+CHECKREQS_DISK_BUILD="3584M"
+
 pkg_setup() {
+	check_reqs_pkg_setup
 	java-pkg-opt-2_pkg_setup
 
 	# Determine itk, itcl, tix, tk and tcl versions
@@ -49,11 +53,6 @@ pkg_setup() {
 	ewarn " Please note that building OpenCascade takes a lot of time and "
 	ewarn " hardware ressources: 3.5-4 GB free diskspace and 256 MB RAM are "
 	ewarn " the minimum requirements. "
-
-	# Check if we have enough RAM and free diskspace to build this beast
-	CHECKREQS_MEMORY="256"
-	CHECKREQS_DISK_BUILD="3584"
-	check_reqs
 }
 
 src_prepare() {
@@ -82,6 +81,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-fixed-DESTDIR.patch
 
 	source env.sh
+
+	append-cxxflags "-fpermissive"
+
 	eautoreconf
 }
 
@@ -106,7 +108,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# .la files kill cute little kittens
 	find "${D}" -name '*.la' -exec rm {} +
@@ -119,10 +121,10 @@ src_install() {
 
 	# Tweak the environment variables script again with new destination
 	cp "${FILESDIR}"/env.sh.template env.sh
-	sed -i "s:VAR_CASROOT:${INSTALL_DIR}/lin:g" env.sh
+	sed -i "s:VAR_CASROOT:${INSTALL_DIR}/lin:g" env.sh || die
 
 	# Build the env.d environment variables
-	cp "${FILESDIR}"/env.sh.template 50${PN}
+	cp "${FILESDIR}"/env.sh.template 50${PN} || die
 	sed -i \
 		-e 's:export ::g' \
 		-e "s:VAR_CASROOT:${INSTALL_DIR}/lin:g" \
@@ -146,24 +148,32 @@ src_install() {
 			|| die "Tweaking of the Tcl/Tk libraries location in env.sh and 50opencascade failed!"
 
 	# Install the env.d variables file
-	doenvd 50${PN} || die
+	doenvd 50${PN}
 
 	cd "${S}"/../ || die
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
-		doins -r data || die
+		doins -r data
 
 		insinto /usr/share/doc/${PF}/examples
-		doins -r samples || die
+		doins -r samples
 	fi
 
 	cd "${S}"/../doc || die
-	dodoc *.pdf || die
+	dodoc *.pdf
 
 	# Install the documentation
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins -r {overview,ReferenceDocumentation} || die
+		doins -r {overview,ReferenceDocumentation}
 	fi
+}
+
+pkg_postinst() {
+	einfo
+	elog "After upgrading OpenCASCADE you may have to rebuild packages depending on it."
+	elog "You get a list by running \"equery depends sci-libs/opencascade\""
+	elog "revdep-rebuild does NOT suffice."
+	einfo
 }

@@ -1,0 +1,9 @@
+app-text/texlive publishers science png truetype xml
+dev-lang/perl ithreads
+dev-perl/Lab-Measurement debug
+dev-vcs/subversion -dso
+media-libs/freetype kpathsea
+media-libs/mesa xa
+sys-libs/zlib minizip
+x11-libs/libdrm libkms
+x11-libs/qt-assistant compat

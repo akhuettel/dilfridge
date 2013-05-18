@@ -15,7 +15,7 @@ SRC_URI="http://www.uni-regensburg.de/verwaltung/medien/corporate-design/frutige
 
 LICENSE="internal-use-only"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=""
 DEPEND="app-arch/unzip"

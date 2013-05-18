@@ -1,0 +1,10 @@
+# nobody should have to run revdep-rebuild. ever.
+=sys-apps/portage-2* **
+
+# for measurement control
+=dev-perl/encoding-warnings-0.110.0
+=dev-perl/Lab-Measurement-3.10
+=dev-perl/TeX-Encode-1.3
+=perl-core/Switch-2.160.0
+=sci-libs/linux-gpib-3.2.16-r3
+

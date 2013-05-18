@@ -1,0 +1,10 @@
+# ChangeLog for app-text/xournalpp
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*xournalpp-9999 (01 Dec 2011)
+
+  01 Dec 2011; Andreas K. Huettel <dilfridge@gentoo.org>
+  +xournalpp-9999.ebuild, +metadata.xml:
+  First rudimentary ebuild
+

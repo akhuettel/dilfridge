@@ -3,10 +3,6 @@
 # a failed attempt at updating, resulting in even more breakage
 =dev-texlive/texlive-context-2009b
 
-#
-# masked for testing
-~sci-libs/opencascade-6.5
-
 # Andreas K. Huettel (dilfridge) <mail@akhuettel.de> (5 May 2010)
 # NI driver ebuilds are not functional yet
 >sci-libs/ni-visa-0.1.0
@@ -16,8 +12,4 @@ sci-libs/ni-orb
 sci-libs/ni-pal
 sci-libs/ni-rpc
 sci-libs/ni-spy
-
-#
-# it's not ready yet
->net-print/cups-1.4.9999
 

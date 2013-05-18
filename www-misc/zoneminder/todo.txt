@@ -1,0 +1,2 @@
+
+* permissions on /tmp/zm, or use alternate directory
